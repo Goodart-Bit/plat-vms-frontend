@@ -1,0 +1,14 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="login">Correo</label>
+        <!--[] for Input bind () for output (events)-->
+        <input type="text" name="login" [(ngModel)] = "login"  
+        id="login" placeholder="Introduzca su correo"/>
+    </div>
+    <div class="form-control">
+        <label for="pass">Contraseña</label>
+        <input type="password" name="pass" [(ngModel)] = "pass"  
+         id="pass" placeholder="Introduzca su contraseña"/>
+    </div>
+    <input type="submit" value="Enviar" class="btn btn-block">
+</form>

@@ -1,0 +1,5 @@
+<header>
+    <app-navbar *ngIf="hasRoot()"></app-navbar>
+    <app-agente-navbar *ngIf="routeIncludes('agentevial')" ></app-agente-navbar>
+    <app-funcionario-navbar *ngIf="routeIncludes('funcionario')"></app-funcionario-navbar>
+</header> 

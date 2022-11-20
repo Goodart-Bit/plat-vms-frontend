@@ -1,0 +1,6 @@
+<div class="container_div">
+    <h1>User Details</h1>
+    <p  *ngFor="let property of userProperties">
+        <span class="primary_color"><b>{{ property }}</b>:</span> {{ user[property] }}
+    </p>
+</div>
