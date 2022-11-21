@@ -25,6 +25,8 @@ import { ReporteComponent } from './components/reporte/reporte.component';
 import { MisAlertasComponent } from './user-components/mis-alertas/mis-alertas.component';
 import { FiltrarReportesComponent } from './user-components/filtrar-reportes/filtrar-reportes.component';
 import { PanelesComponent } from './user-components/paneles/paneles.component';
+import { PanelComponent } from './user-components/panel/panel.component';
+import { PanelesByViaComponent } from './user-components/paneles-by-via/paneles-by-via.component';
 
 const appRoutes: Routes = [
   {path: '', component: LogUserComponent},
@@ -36,7 +38,9 @@ const appRoutes: Routes = [
   {path: ':type/mis-reportes/new', component: ReporteComponent},
   {path: 'funcionario/mis-alertas', component: MisAlertasComponent},
   {path: 'funcionario/mis-alertas/filtrar/:ini&:end', component: FiltrarReportesComponent},
-  {path: 'funcionario/paneles', component: PanelesComponent}
+  {path: 'funcionario/paneles', component: PanelesComponent},
+  {path: 'funcionario/panel/:id', component: PanelComponent},
+  {path: 'funcionario/paneles-by-via/:id', component: PanelesByViaComponent}
 ]
 
 @NgModule({
@@ -55,7 +59,9 @@ const appRoutes: Routes = [
     ReporteComponent,
     MisAlertasComponent,
     FiltrarReportesComponent,
-    PanelesComponent
+    PanelesComponent,
+    PanelComponent,
+    PanelesByViaComponent
   ],
   imports: [
     BrowserModule,

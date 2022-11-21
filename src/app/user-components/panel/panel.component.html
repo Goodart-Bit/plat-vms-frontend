@@ -1,0 +1,15 @@
+<h1>Panel details</h1>
+<p  *ngFor="let property of panelProperties">
+    <span class="primary_color"><b>{{ property }}</b>:</span> {{ panel[property] }}
+</p>
+<button class="btn" *ngIf="panelApagado()" (click)="onToggleEstado()">Encender</button>
+<button class="btn" *ngIf="!panelApagado()" (click)="onToggleEstado()">Apagar</button>
+<form class="add-form">
+    <div class="form-control">
+        <label for="pass">Estado personalizado</label>
+        <input type="customEstado" name="customEstado" [(ngModel)] = "customEstado" 
+        placeholder="Introduzca un estado" />
+    </div>
+    <input type="submit" (click) = "onInputEstado(customEstado)"
+        value="Enviar" class="btn btn-block">
+</form>

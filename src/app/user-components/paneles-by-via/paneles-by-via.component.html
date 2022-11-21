@@ -1,5 +1,5 @@
-<span class="primary_color"><h1>Paneles</h1></span>
-<p>Esta es una lista de todos los paneles que estan vigilando sus vias asignadas</p>
+<h1>Paneles Por Via</h1>
+<span class="primary_color">{{idVia}}</span>
 <table mat-table [dataSource]="vms_list" class="mat-elevation-z8 expanded-table">
     <!-- Id Column -->
     <ng-container matColumnDef="id">
@@ -30,10 +30,11 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
-            <button mat-button (click)="getPanel(row.id)">Ver</button>
+            <button mat-button (click)="getPanel(row.id)">Tomar desicion</button>
         </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
 </table>
+

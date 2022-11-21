@@ -20,4 +20,14 @@ export class VmsService {
   getVmsByVia(idVia: string): Observable<Vms[]> {
     return this.http.get<Vms[]>(`${this.vmsUrl}/getVmsInVia/${idVia}`)
   }
+
+  getVmsById(id: string): Observable<Vms> {
+    return this.http.get<Vms>(`${this.vmsUrl}/${id}`);
+  }
+
+  changeState(panel: Vms) {
+    return this.http.put<Vms>(`${this.vmsUrl}/update`,panel,httpOptions).subscribe(ok=>{
+      console.log(ok)
+    });
+  }
 }

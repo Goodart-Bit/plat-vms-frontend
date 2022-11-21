@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Vms, Via } from 'src/app/entities/Misc';
 import { UserService } from 'src/app/services/user/user-service.service';
 import { VmsService } from 'src/app/services/vms/vms.service';
@@ -12,7 +13,7 @@ export class PanelesComponent implements OnInit {
   vms_list!: Vms[];
   displayedColumns: string[] = ['id','coordenadas','tipo','idViaAsignada','estado','actions']
 
-  constructor(private vmsService: VmsService, private userService: UserService) { }
+  constructor(private vmsService: VmsService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     let vias: Via[] = this.userService.getUser().viasAsignadas
@@ -26,8 +27,8 @@ export class PanelesComponent implements OnInit {
     })
   }
 
-  getPanel(panel: any) {
-    console.log(panel.id)
+  getPanel(id: string) {
+    this.router.navigate(['funcionario','panel',id])
   }
 
 }

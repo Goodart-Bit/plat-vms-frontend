@@ -1,4 +1,6 @@
-<span class="primary_color"><h1>Vias asignadas</h1></span>
+<span class="primary_color"><h1>Consulte sus paneles</h1></span>
+<h3>Para comenzar, seleccione una via.</h3>
+<p>A continuación, haga click sobre el boton ver para ver los paneles asignados a esta</p>
 <table mat-table [dataSource]="viasData" class="mat-elevation-z8">
     <!-- Id Column -->
     <ng-container matColumnDef="id">
@@ -14,6 +16,13 @@
     <ng-container matColumnDef="municipio">
         <th mat-header-cell *matHeaderCellDef> Municipio </th>
         <td mat-cell *matCellDef="let via"> {{via.municipio}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-button (click)="getVia(row.id)">Ver</button>
+        </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

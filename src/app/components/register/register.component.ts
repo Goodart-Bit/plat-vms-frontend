@@ -1,6 +1,6 @@
 import { Component, OnInit, resolveForwardRef } from '@angular/core';
 import { UserService } from 'src/app/services/user/user-service.service';
-import { AgenteVial,Funcionario } from 'src/app/entities/User';
+import { AgenteVial, Funcionario } from 'src/app/entities/User';
 
 @Component({
   selector: 'app-register',
@@ -39,13 +39,14 @@ export class RegisterComponent implements OnInit {
   }
 
   async attemptRegister(user: any) {
-    let persistedUser:any;
-    if(this.loginFields.type === 'agente'){
+    let persistedUser: any;
+    if (this.loginFields.type === 'agente') {
       persistedUser = await this.registerAgent(user)
     } else {
       persistedUser = await this.registerFuncionario(user);
     }
-    if(persistedUser.error){
+    if (persistedUser.error) {
+      console.error(persistedUser.error)
       alert('Error on creation')
     } else {
       alert('User created')
@@ -69,17 +70,19 @@ export class RegisterComponent implements OnInit {
   }
 
   async registerFuncionario(user: any): Promise<any> {
-    return this.userService.addAgente(user).subscribe({
-      next: user => {
-        if (!user) {
-          return { 'error': 'access but not found' }
+    return new Promise<any>(resolve => {
+      this.userService.addAgente(user).subscribe({
+        next: user => {
+          if (!user) {
+            resolve({ 'error': 'access but not found' })
+          }
+          resolve(user);
+        },
+        error: err => {
+          resolve({ 'error': err })
         }
-        return user;
-      },
-      error: err => {
-        return { 'error': err }
-      }
-    });
+      });
+    })
   }
 
   assertData(registerData: string[]): boolean {
