@@ -12,4 +12,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  routeIncludes(param: string){
+    return this.router.url.includes(param);
+  }
+
+  onClickRegistro() {
+    this.router.navigate([`${this.router.url}/registro`])
+  }
 }

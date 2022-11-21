@@ -3,5 +3,6 @@
         <mat-icon>eco</mat-icon> PlatVMS
     </span>
     <div class="spacer"></div>
-    <a mat-raised-button color="accent">Registrarse</a>
+    <a *ngIf="!routeIncludes('registro')"
+    (click)="onClickRegistro()" mat-raised-button color="accent">Registrarse</a>
 </mat-toolbar>

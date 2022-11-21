@@ -1,4 +1,8 @@
-.expanded_table {
+button {
+    margin-top: 35px;
+}
+
+.expanded-table {
     width: 100%;
 }
 
@@ -8,17 +12,16 @@
 }
 
 .mat-column-fecha_ini {
-    color: green;
-    padding-left: 100px;
+    padding-left: 30px;
 }
 
 .mat-column-via {
-    padding-left: 100px;
+    padding-left: 30px;
 }
 
 .mat-column-evento {
     border-right: 1px solid green;
-    padding-left: 100px;
+    padding-left: 30px;
 }
 
 .mat-column-demo-symbol {

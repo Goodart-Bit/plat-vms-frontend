@@ -1,0 +1,37 @@
+<span class="primary_color">
+    <h1>Bienvenido al menu registro</h1>
+</span>
+<form class="add-form">
+    <div class="form-control">
+        <label for="fistName">Nombre</label>
+        <input type="text" name="firstName" [(ngModel)] = "loginFields.firstName" 
+        id="firstName" placeholder="Introduzca su nombre" />
+    </div>
+    <div class="form-control">
+        <label for="lastName">Apellido</label>
+        <input type="text" name="lastName" [(ngModel)] = "loginFields.lastName"
+        id="lastName" placeholder="Introduzca su apellido" />
+    </div>
+    <div class="form-control">
+        <label for="login">Correo</label>
+        <!--[] for Input bind () for output (events)-->
+        <input type="text" name="login" [(ngModel)] = "loginFields.email" 
+        id="login" placeholder="Introduzca su correo" />
+    </div>
+    <div class="form-control">
+        <label for="pass">Contraseña</label>
+        <input type="password" name="pass" id="pass" [(ngModel)] = "loginFields.pass" 
+        placeholder="Introduzca su contraseña" />
+    </div>
+    <div style="text-align: center;">
+        <label for="tipo">Tipo de usuario</label>
+        <fieldset>
+            <input type="radio" id="agente" name="tipo" value="agente" [(ngModel)] = "loginFields.type" />
+            <label for="agente">Agente</label>
+            <input type="radio" id="funcionario" name="tipo" value="funcionario" [(ngModel)] = "loginFields.type" />
+            <label for="funcionario">Funcionario</label>
+        </fieldset>
+    </div>
+    <input type="submit" (click) = "onSubmit()"
+    value="Enviar" class="btn btn-block">
+</form>

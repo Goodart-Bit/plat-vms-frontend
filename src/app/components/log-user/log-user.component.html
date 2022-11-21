@@ -7,8 +7,17 @@
     </div>
     <div class="form-control">
         <label for="pass">Contraseña</label>
-        <input type="password" name="pass" [(ngModel)] = "pass"  
+        <input type="password" name="pass" [(ngModel)] = "password"  
          id="pass" placeholder="Introduzca su contraseña"/>
+    </div>
+    <div style="text-align: center;">
+        <label for="tipo">Tipo de usuario</label>
+        <fieldset>
+            <input type="radio" id="agente" name="tipo" value="agente" [(ngModel)] = "type" />
+            <label for="agente">Agente</label>
+            <input type="radio" id="funcionario" name="tipo" value="funcionario" [(ngModel)] = "type" />
+            <label for="funcionario">Funcionario</label>
+        </fieldset>
     </div>
     <input type="submit" value="Enviar" class="btn btn-block">
 </form>

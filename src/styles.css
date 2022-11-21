@@ -18,10 +18,10 @@ body {
 
 .container {
   position: relative;
-  max-width: 600px;
+  width: fit-content;
   margin: 50px auto;
-  overflow: auto;
-  min-height: 400px;
+  min-height: 300px;
+  max-height: fit-content;
   background-color: white;
   border-radius: 20px;
   display: flex;
@@ -55,10 +55,7 @@ body {
 }
 
 .add-form {
-  color: #149839;
-  position: absolute;
-  left: 200px;
-  top: 50px;
+  color: #1E1E1E;
 }
 
 .form-control {
@@ -111,6 +108,53 @@ p {
   font-weight: 100;
 }
 
+fieldset {
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+fieldset label{
+  margin-right: 10px;
+}
+
 .primary_color {
+  color: #149839;
+}
+
+<!--TABLES-->
+
+.expanded-table {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.mat-column-id {
   color: green;
+  padding-left: 100px;
+}
+
+.mat-column-fecha_ini {
+  padding-left: 30px;
+}
+
+.mat-column-via {
+  padding-left: 30px;
+}
+
+.mat-column-evento {
+  border-right: 1px solid green;
+  padding-left: 30px;
+}
+
+.mat-column-demo-symbol {
+  text-align: center;
+  font-weight: bold;
+}
+
+.date {
+  width: 230px;
+}
+
+label{
+  text-align: start;
 }

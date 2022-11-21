@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router'
+import { ReplaySubject } from 'rxjs';
 import { UserService } from 'src/app/services/user/user-service.service';
 
 @Component({
@@ -9,12 +10,12 @@ import { UserService } from 'src/app/services/user/user-service.service';
 })
 export class LogUserComponent implements OnInit {
   login!: string;
-  pass!: string;
-  @Output() successSubmit = new EventEmitter();
+  password!: string;
+  type!: string;
 
   constructor(private router: Router, private userService: UserService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit() {
     if (!(this.login)) {
@@ -25,33 +26,54 @@ export class LogUserComponent implements OnInit {
   }
 
   async attemptLogin() {
-    const creedentials = {
-      email: this.login,
-      pass: this.pass
+    let user: any;
+    let typeRoute: string;
+    if (this.type === 'funcionario') {
+      user = await this.getFuncionario();
+      typeRoute = "funcionario"
+    } else {
+      user = await this.getAgente();
+      typeRoute = "agentevial"
     }
-    const userMeta: any = await this.getUserMeta(creedentials)
-    if (userMeta.error) {
+    if (user.error) {
       this.login = ""
-      this.pass = ""
+      this.password = ""
       alert("Creedenciales invalidas")
     } else {
-      this.successSubmit.emit();
-      this.router.navigate([userMeta.type,userMeta.id])
+      this.userService.activateUser(user);
+      this.router.navigate([typeRoute])
     }
   }
 
-  private getUserMeta(creedentials: any): Promise<any> {
+  private getFuncionario(): Promise<any> {
     return new Promise<any>((resolve) => {
-      this.userService.getFuncionarioByEmail(creedentials.email).subscribe((user) => {
-        if (user) {
-          this.userService.activateUser(user);
-          let type: string = user.hasOwnProperty('idViaAsignada') ? 'agentevial' : 'funcionario' ;
-          resolve({
-            'id':user.id,
-            'type':type
-          });
-        } else {
-          resolve({ 'error':'not found'})
+      this.userService.authenticateFuncionario({"email":this.login,"password":this.password}).subscribe({
+        next: user => {
+          if (user) {
+            resolve(user);
+          } else if (!user) {
+            resolve({ 'error': 'access but not found' })
+          }
+        },
+        error: err => {
+          resolve({ 'error': err })
+        }
+      });
+    });
+  }
+
+  private getAgente(): Promise<any> {
+    return new Promise<any>((resolve) => {
+      this.userService.authenticateAgente({"email":this.login,"password":this.password}).subscribe({
+        next: user => {
+          if (user) {
+            resolve(user);
+          } else {
+            resolve({ 'error': 'not found' })
+          }
+        },
+        error: err => {
+          resolve({ 'error': err })
         }
       });
     });

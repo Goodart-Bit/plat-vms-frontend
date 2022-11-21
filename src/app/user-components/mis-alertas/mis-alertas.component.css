@@ -1,0 +1,16 @@
+button {
+    margin-top: 35px;
+}
+
+.expanded-table {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.date {
+    width: 230px;
+}
+
+label{
+    text-align: start;
+}

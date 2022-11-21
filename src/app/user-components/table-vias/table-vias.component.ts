@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user-service.service';
-import { Via } from 'src/app/entities/Via';
+import { Via } from 'src/app/entities/Misc';
 
 @Component({
   selector: 'app-table-vias',
@@ -15,7 +15,6 @@ export class TableViasComponent implements OnInit {
 
   ngOnInit(): void {
     this.viasData = this.userService.getUser().viasAsignadas;
-    console.log(this.viasData)
   }
 
 }

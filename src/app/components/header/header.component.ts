@@ -1,3 +1,4 @@
+import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user-service.service';
@@ -12,7 +13,12 @@ export class HeaderComponent implements OnInit {
   constructor(private router:Router, private userService: UserService) {
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    if(!this.userService.getUser()){
+      //alert('Inicie sesion nuevamente, por favor')
+      //this.router.navigate(['/'])
+    }
+  }
 
   hasRoot(){
     return !(this.routeIncludes('/funcionario') || this.routeIncludes('/agentevial'));

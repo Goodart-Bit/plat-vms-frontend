@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user-service.service';
-import { Via } from 'src/app/entities/Via';
+import { Via } from 'src/app/entities/Misc';
 
 @Component({
   selector: 'app-details',
@@ -16,6 +16,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getUser();
     this.userProperties = Object.getOwnPropertyNames(this.user)
+    this.userProperties.pop()
     this.userProperties.pop()
   }
 }

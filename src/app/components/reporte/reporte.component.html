@@ -1,0 +1,24 @@
+<span class="primary_color">
+    <h1>Bienvenido al menu registro</h1>
+</span>
+<form class="add-form">
+    <div class="form-control">
+        <label for="fecha_ini">Fecha inicio</label>
+        <input type="text" name="fecha_ini" [(ngModel)] = "reporte.fechaInicio" 
+        id="fecha_ini" placeholder="Introduzca una fecha" />
+    </div>
+    <div class="form-control">
+        <label for="via">Via</label>
+        <input type="text" name="via" [(ngModel)] = "reporte.nameVia"
+        id="via" placeholder="Introduzca una via" />
+    </div>
+    <div class="form-control">
+        <label for="evento">Evento</label>
+        <!--[] for Input bind () for output (events)-->
+        <input type="text" name="evento" [(ngModel)] = "reporte.tipoEvento" 
+        id="evento" placeholder="Introduzca un evento" />
+    </div>
+    <input type="submit" (click) = "onSubmit()"
+    value="Enviar" class="btn btn-block">
+</form>
+

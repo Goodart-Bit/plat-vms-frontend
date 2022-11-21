@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table'
+import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,12 +19,24 @@ import { LogUserComponent } from './components/log-user/log-user.component';
 import { MenuComponent } from './user-components/menu/menu.component';
 import { DetailsComponent } from './user-components/details/details.component';
 import { TableViasComponent } from './user-components/table-vias/table-vias.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ReportesComponent } from './user-components/reportes/reportes.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
+import { MisAlertasComponent } from './user-components/mis-alertas/mis-alertas.component';
+import { FiltrarReportesComponent } from './user-components/filtrar-reportes/filtrar-reportes.component';
+import { PanelesComponent } from './user-components/paneles/paneles.component';
 
 const appRoutes: Routes = [
   {path: '', component: LogUserComponent},
-  {path: ':type/:id', component: MenuComponent},
+  {path:'registro', component: RegisterComponent},
+  {path: ':type', component: MenuComponent},
   {path: ':type/:id/account-details', component: DetailsComponent},
-  {path: ':type/:id/vias-asignadas', component: TableViasComponent}
+  {path: ':type/:id/vias-asignadas', component: TableViasComponent},
+  {path: ':type/mis-reportes', component: ReportesComponent},
+  {path: ':type/mis-reportes/new', component: ReporteComponent},
+  {path: 'funcionario/mis-alertas', component: MisAlertasComponent},
+  {path: 'funcionario/mis-alertas/filtrar/:ini&:end', component: FiltrarReportesComponent},
+  {path: 'funcionario/paneles', component: PanelesComponent}
 ]
 
 @NgModule({
@@ -36,7 +49,13 @@ const appRoutes: Routes = [
     LogUserComponent,
     MenuComponent,
     DetailsComponent,
-    TableViasComponent
+    TableViasComponent,
+    RegisterComponent,
+    ReportesComponent,
+    ReporteComponent,
+    MisAlertasComponent,
+    FiltrarReportesComponent,
+    PanelesComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +68,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
